@@ -6,10 +6,6 @@ root.title("CalcPro+-*/")
 root.geometry('600x700+378+50')
 n = StringVar()
 number = ''
-plus = '+'
-minus = '-'
-split = '/'
-multiply = '*'
 
 def main():
 	global number
@@ -85,6 +81,14 @@ def numberMultiplyHash():
 	return number
 	return symbol
 
+def numberSqr():
+	global number
+	numberInt = float(number)
+	number = str(numberInt ** 2)
+	n.set("Ответ: " + number)
+	number = ''
+	return number
+
 def addNum1():
 	global number
 	number += '1'
@@ -157,10 +161,20 @@ def rmNum():
 	n.set(number)
 	return number
 
+def numberClear():
+	global number
+	number = ''
+	n.set(number)
+	return number
 
 
-label = Label(textvariable = n, bg = '#fff', fg = "#000", padx = '10', pady = '10', font = '18')
+
+label = Label(textvariable = n, bg = '#fff', fg = "#000", padx = '10', pady = '10', font = '38')
 label.place(x = '0', y = '0', width = '600', height = '100')
+btnClear = Button(text = 'C', background = '#ccc', foreground = '#000', highlightcolor = '#fff', command = numberClear)
+btnClear.place(height = '50', width = '150', x = '0', y = '100')
+btnSqr = Button(text = 'x^2', background = '#ccc', foreground = '#000', highlightcolor = '#fff', command = numberSqr)
+btnSqr.place(height = '50', width = '150', x = '150', y = '100')
 btnPlus = Button(text = '+', background = '#ccc', foreground = '#000', highlightcolor = '#fff', command = numberPlusHash)
 btnPlus.place(height = '50', width = '150', x = '0', y = '150')
 btnMinus = Button(text = '-', background = '#ccc', foreground = '#000', highlightcolor = '#fff', command = numberMinusHash)
